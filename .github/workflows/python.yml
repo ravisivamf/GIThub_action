@@ -44,10 +44,6 @@ jobs:
           git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
           
       - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_user_name: ravisivamf
-	      env:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-	      run-name:  
-          git push -u origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push -u origin main
